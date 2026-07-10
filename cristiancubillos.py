@@ -53,7 +53,28 @@ def agregar_pelicula(genero, cartelera):
         print("El código ya existe. No se puede agregar la película.")
     elif not validar_titulo(titulo):
         print("Título inválido.")
-        
+    elif not validar_genero(genero):
+        print("Género inválido.")
+    elif not validar_duracion(duracion):
+        print("Duración inválida.")
+    elif not validar_clasificacion(clasificacion):
+        print("Clasificación inválida. Debe ser A, B o C.")
+    elif not validar_idioma(idioma):
+        print("Idioma inválido.")
+    elif not validar_precio(precio):
+        print("Precio inválido. Debe ser un número positivo.")
+    elif not validar_cupos(cupos):
+        print("Cupos inválidos.")
+    else:
+        agregar_pelicula(genero, cartelera, codigo, titulo, duracion, clasificacion, idioma, precio, cupos)
+        print("Película agregada correctamente.")
+
+def eliminar_pelicula(codigo, cartelera):
+    codigo = input("Ingrese el código de la película a eliminar: ").lower()
+    if elliminar_pelicula(codigo, cartelera):
+        print("Película eliminada correctamente.")
+    else:
+        print("El código no existe. No se puede eliminar la película.")
 
 def leer_opcion():
     while True:
@@ -88,7 +109,7 @@ def main():
         elif opcion == 4:
             agregar_pelicula(cartelera)
         elif opcion == 5:
-            print("estamos trabajando para usted")
+            eliminar_pelicula(cartelera)
         elif opcion == 6:
             print("Saliendo del programa...")
             break

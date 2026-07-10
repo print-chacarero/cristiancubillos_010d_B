@@ -97,19 +97,20 @@ def mostrar_menu():
 
 def main():
     cartelera = {}
+    codigo = {}
     while True:
         mostrar_menu()
         opcion = leer_opcion()
         if opcion == 1:
-            cupos_por_genero(cartelera)
+            cupos_por_genero(codigo, cartelera)
         elif opcion == 2:
             print("estamos trabajando para usted")
         elif opcion == 3:
-            actualizar_precio(cartelera)
+            actualizar_precio(codigo, 0, cartelera)
         elif opcion == 4:
-            agregar_pelicula(cartelera)
+            agregar_pelicula(codigo, cartelera)
         elif opcion == 5:
-            eliminar_pelicula(cartelera)
+            eliminar_pelicula(codigo, cartelera)
         elif opcion == 6:
             print("Saliendo del programa...")
             break

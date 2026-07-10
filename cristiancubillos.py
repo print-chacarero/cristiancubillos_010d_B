@@ -33,14 +33,27 @@ def actualizar_precio(codigo, nuevo_precio, cartelera):
             print("Debe ingresar valores numericos.")
         if input("¿Desea actualizar otra película? (s/n): ").lower() != 's':
             break
-def agregar_pelicula(codigo, titulo, genero, duracion, clasificacion, idioma, precio, cupos, cartelera):
-    if buscar_codigo(codigo, cartelera):
-        return False
-    genero[codigo.lower()] = [titulo, genero, duracion, clasificacion, idioma, precio, cupos]
-    cartelera[codigo.lower()] = [titulo, genero, duracion, clasificacion, idioma, precio, cupos]
-    return True
-    
 
+def agregar_pelicula(genero, cartelera):
+    codigo = input("Ingrese el código de la película: ").lower()
+    titulo = input("Ingrese el título de la película: ")
+    genero = input("Ingrese el género de la película: ")
+    duracion = int(input("Ingrese la duración de la película (en minutos): "))
+    clasificacion = input("Ingrese la clasificación de la película (A, B, C): ")
+    idioma = input("Ingrese el idioma de la película: ")
+    try:
+        precio = float(input("Ingrese el precio de la película: "))
+        cupos = int(input("Ingrese la cantidad de cupos disponibles: "))
+    except ValueError:
+        print("Debe ingresar valores numericos.")
+        return
+    if not validar_codigo(codigo):
+        print("Código inválido. Debe ser un valor no vacío.")
+    elif buscar_codigo(codigo, cartelera):
+        print("El código ya existe. No se puede agregar la película.")
+    elif not validar_titulo(titulo):
+        print("Título inválido.")
+        
 
 def leer_opcion():
     while True:

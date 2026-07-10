@@ -16,7 +16,7 @@ def cupos_por_genero(genero, codigo, cartelera):
     for pelicula, codigo in cartelera.items():
         if codigo.lower() == genero.lower() and codigo in cartelera:
             total = total + genero[codigo]['cupos']
-    print(f"El total de cupos para el género {genero} es: {total}")
+    print(f"El total de cupos para el género es: {total}")
 
 def actualizar_precio(codigo, nuevo_precio, cartelera):
     while True:
@@ -36,10 +36,10 @@ def actualizar_precio(codigo, nuevo_precio, cartelera):
 
 def agregar_pelicula(genero, cartelera):
     codigo = input("Ingrese el código de la película: ").lower()
-    titulo = input("Ingrese el título de la película: ")
-    genero = input("Ingrese el género de la película: ")
+    titulo = input("Ingrese el título de la película: ").lower()
+    genero = input("Ingrese el género de la película: ").lower()
     duracion = int(input("Ingrese la duración de la película (en minutos): "))
-    clasificacion = input("Ingrese la clasificación de la película (A, B, C): ")
+    clasificacion = input("Ingrese la clasificación de la película (A, B, C): ").upper()
     idioma = input("Ingrese el idioma de la película: ")
     try:
         precio = float(input("Ingrese el precio de la película: "))
@@ -96,13 +96,14 @@ def mostrar_menu():
     print("6. Salir")
 
 def main():
-    cartelera = {}
+    genero = {}
     codigo = {}
+    cartelera = {}
     while True:
         mostrar_menu()
         opcion = leer_opcion()
         if opcion == 1:
-            cupos_por_genero(codigo, cartelera)
+            cupos_por_genero(genero, codigo, cartelera)
         elif opcion == 2:
             print("estamos trabajando para usted")
         elif opcion == 3:
